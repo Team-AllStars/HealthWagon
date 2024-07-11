@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>HealthWagon - home</title>
+  <meta name="title" content="Doclab - home">
+  <meta name="description" content="This is a medical html template made by codewithsadee">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Rubik:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
+  <link rel="preload" as="image" href="./assets/images/hero-bg.png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.css" />
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header style="background-color: hsl(186, 100%, 19%);">
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" width="136" height="46" alt="Doclab home">
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="navbar-top">
+
+          <a href="#" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.svg') }}" width="136" height="46" alt="Doclab home">
+          </a>
+
+          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+        </div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Doctors</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Services</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Blog</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Contact</a>
+          </li>
+
+        </ul>
+
+        <ul class="social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-pinterest"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <a href="#" class="btn has-before title-md">Chat with Lexi</a>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+
+  <div id="map-container" style="padding-top: 200px;" class="section blog" aria-labelledby="blog-label">
+    <div id="map"></div>
+    <div id="map-overlay">
+      <h1>Emergency Map</h1>
+    </div>
+  </div>
+
+  <button id="route-button" style="position: absolute; top: 100px; right: 20px;">Route</button>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var map = L.map('map').setView([13.013217752910093, 80.23886245448615], 15);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      var sosIcon = L.icon({
+        iconUrl: "{{ url_for('static', filename='images/sos.png') }}",
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+      });
+      L.marker([13.013217752910093, 80.23886245448615], {
+        icon: sosIcon
+      }).addTo(map).bindPopup('SOS').openPopup();
+
+      var ambulanceIcon = L.icon({
+        iconUrl: "{{ url_for('static', filename='images/ambulance.png') }}",
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+      });
+
+      var ambulanceMarker = L.marker(generateRandomCoordinates([13.013217752910093, 80.23886245448615], 500), {
+        icon: ambulanceIcon
+      }).addTo(map);
+
+      var routeButton = document.getElementById('route-button');
+      routeButton.addEventListener('click', function () {
+        var sosCoordinates = [13.013217752910093, 80.23886245448615];
+        var ambulanceCoordinates = ambulanceMarker.getLatLng();
+
+        // Create a routing control
+        L.Routing.control({
+          waypoints: [
+            L.latLng(sosCoordinates),
+            L.latLng(ambulanceCoordinates)
+          ],
+          routeWhileDragging: true,
+          show: false
+        }).addTo(map);
+      });
+
+      // Function to generate random coordinates within a certain radius from the SOS location
+      function generateRandomCoordinates(center, radius) {
+        var lat = center[0] + (Math.random() - 0.5) * radius * 0.0001;
+        var lng = center[1] + (Math.random() - 0.5) * radius * 0.0001 / Math.cos(center[0] * Math.PI / 180);
+        return [lat, lng];
+      }
+    });
+  </script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: row;
+    }
+
+    #map-container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    h1 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    #map {
+      height: calc(100% - 40px);
+      width: 100%;
+      z-index: 1;
+    }
+
+    #map-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.7);
+      z-index: 2;
+    }
+
+    #route-button {
+      padding-top: 400px;  
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</body>
+
+</html>

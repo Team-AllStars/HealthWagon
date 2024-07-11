@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>HealthWagon - home</title>
+  <meta name="title" content="Doclab - home">
+  <meta name="description" content="This is a madical html template made by codewithsadee">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Rubik:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
+  <link rel="preload" as="image" href="./assets/images/hero-bg.png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #PRELOADER
+  -->
+
+
+
+
+
+
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header style="background-color: hsl(186, 100%, 19%);">
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" width="136" height="46" alt="Doclab home">
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="navbar-top">
+
+          <a href="#" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.svg') }}" width="136" height="46" alt="Doclab home">
+          </a>
+
+          <button class="nav-close-btn" aria-label="clsoe menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+        </div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Doctors</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Services</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Blog</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Contact</a>
+          </li>
+
+        </ul>
+
+        <ul class="social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-pinterest"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <a href="#" class="btn has-before title-md">Chat with Lexi</a>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+
+
+
+  
+
+  <div id="map-container" style="padding-top: 200px;"class="section blog" aria-labelledby="blog-label" >
+    <div id="map"></div>
+    <div id="map-overlay">
+      <h1>Emergency Map</h1>
+    </div>
+  </div>
+  <div id="sidebar" style="padding-top: 130px;">
+    <h2>SOS Alerts</h2>
+    <ul id="sos-list">
+      <li class="sos-item">SOS Request 1</li>
+      <!-- <li class="sos-item">SOS Request 2</li>
+      <li class="sos-item">SOS Request 3</li> -->
+      <!-- Add more SOS requests as needed -->
+    </ul>
+    <h2>Ambulances</h2>
+    <ul id="ambulance-list">
+      <li class="ambulance-item">Ambulance 1</li>
+      <li class="ambulance-item">Ambulance 2</li>
+      <li class="ambulance-item">Ambulance 3</li>
+      <li class="ambulance-item">Ambulance 4</li>
+      <li class="ambulance-item">Ambulance 5</li>
+    </ul>
+    <button class="send-button" id="send-button">Send Ambulance</button>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var map = L.map('map').setView([13.013217752910093, 80.23886245448615], 15);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      var sosIcon = L.icon({
+        iconUrl: "{{ url_for('static', filename='images/sos.png') }}",
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+      });
+      L.marker([13.013217752910093, 80.23886245448615], {
+        icon: sosIcon
+      }).addTo(map).bindPopup('SOS').openPopup();
+
+      var ambulanceIcon = L.icon({
+        iconUrl: "{{ url_for('static', filename='images/ambulance.png') }}",
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+      });
+
+      var ambulances = [];
+
+      // Function to generate random coordinates within a certain radius from the SOS location
+      function generateRandomCoordinates(center, radius) {
+        var lat = center[0] + (Math.random() - 0.5) * radius * 0.0001;
+        var lng = center[1] + (Math.random() - 0.5) * radius * 0.0001 / Math.cos(center[0] * Math.PI / 180);
+        return [lat, lng];
+      }
+
+      // Generate and add ambulance markers
+      document.getElementById('ambulance-list').innerHTML = ''; // Clear existing ambulance list
+      for (var i = 0; i < 5; i++) {
+        var randomCoord = generateRandomCoordinates([13.013217752910093, 80.23886245448615], 500); // Change the radius as needed
+        var ambulanceMarker = L.marker(randomCoord, {
+          icon: ambulanceIcon
+        }).addTo(map);
+        ambulanceMarker.bindPopup('Ambulance ' + (i + 1)); // Add popup with ambulance number
+        ambulances.push(ambulanceMarker);
+
+        var ambulanceItem = document.createElement('li');
+        ambulanceItem.classList.add('ambulance-item');
+        ambulanceItem.textContent = 'Ambulance ' + (i + 1);
+        ambulanceItem.setAttribute('data-ambulance', 'Ambulance ' + (i + 1));
+        ambulanceItem.setAttribute('data-lat', randomCoord[0]);
+        ambulanceItem.setAttribute('data-lng', randomCoord[1]);
+        document.getElementById('ambulance-list').appendChild(ambulanceItem);
+      }
+
+      // Add click event to SOS list items
+      document.querySelectorAll('.sos-item').forEach(item => {
+        item.addEventListener('click', function () {
+          // Remove 'selected' class from all SOS items
+          document.querySelectorAll('.sos-item').forEach(item => {
+            item.classList.remove('selected');
+          });
+          // Add 'selected' class to the clicked SOS item
+          this.classList.add('selected');
+        });
+      });
+
+      // Add click event to ambulance list items
+      document.querySelectorAll('.ambulance-item').forEach(item => {
+        item.addEventListener('click', function () {
+          // Remove 'selected' class from all ambulance items
+          document.querySelectorAll('.ambulance-item').forEach(item => {
+            item.classList.remove('selected');
+          });
+          // Add 'selected' class to the clicked ambulance item
+          this.classList.add('selected');
+        });
+      });
+
+      // Send ambulance button click event
+      document.getElementById('send-button').addEventListener('click', function () {
+        var selectedSOS = document.querySelector('.sos-item.selected');
+        var selectedAmbulance = document.querySelector('.ambulance-item.selected');
+        if (selectedSOS && selectedAmbulance) {
+          var sosNumber = selectedSOS.textContent.replace('SOS Request ', '');
+          var ambulanceNumber = selectedAmbulance.textContent.replace('Ambulance ', '');
+          alert('SOS Request ' + sosNumber + ' is addressed with Ambulance ' + ambulanceNumber);
+        } else {
+          alert('Please select a SOS request and an ambulance first!');
+        }
+      });
+    });
+  </script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: row;
+    }
+
+    #map-container {
+      width: 70%;
+      height: 100vh;
+      position: relative;
+    }
+
+    #sidebar {
+      width: 30%;
+      length: 100%;
+      background-color: #f4f4f4;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    h1 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    #sos-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sos-item {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #e6e2e2;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .sos-item.selected {
+      background-color: teal;
+      color: white;
+    }
+
+    #ambulance-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .ambulance-item {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .ambulance-item:hover {
+      background-color: #e0e0e0;
+    }
+
+    .ambulance-item.selected {
+      background-color: teal;
+      color: white;
+    }
+
+    .send-button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      background-color: black;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .send-button:hover {
+      background-color: #45a049;
+    }
+
+    #map {
+      height: calc(100% - 40px);
+      width: 100%;
+      z-index: 1;
+    }
+
+    #map-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.7);
+      z-index: 2;
+    }
+  </style>
+</body>
+
+</html>

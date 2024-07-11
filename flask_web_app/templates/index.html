@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>HealthWagon - home</title>
+  <meta name="title" content="HealthWagon - home">
+  <meta name="description" content="">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Rubik:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
+  <link rel="preload" as="image" href="./assets/images/hero-bg.png">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #PRELOADER
+  -->
+
+  <div class="preloader" data-preloader>
+    <div class="circle"></div>
+  </div>
+
+
+
+
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" width="136" height="46" alt="HealthWagon home">
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="navbar-top">
+
+          <a href="#" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.svg') }}" width="136" height="46" alt="HealthWagon home">
+          </a>
+
+          <button class="nav-close-btn" aria-label="clsoe menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+        </div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md" style="color:white;" onmouseover="this.style.color='black';" onmouseout="this.style.color='white';">Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md" style="color:white;" onmouseover="this.style.color='black';" onmouseout="this.style.color='white';">Doctors</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md" style="color:white;" onmouseover="this.style.color='black';" onmouseout="this.style.color='white';">Services</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md" style="color:white;" onmouseover="this.style.color='black';" onmouseout="this.style.color='white';">Blog</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md" style="color:white;" onmouseover="this.style.color='black';" onmouseout="this.style.color='white';">Contact</a>
+          </li>
+
+        </ul>
+
+        <ul class="social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-pinterest"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <a href="#" class="btn has-before title-md" style="color: white;">Chat with Lexi</a>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+
+
+
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="section hero" style="background-image: url('./assets/images/hero-bg.png')" aria-label="home">
+        <div class="container">
+
+          <div class="hero-content">
+
+            <p class="hero-subtitle has-before" data-reveal="left">Welcome To HealthWagon</p>
+
+            <h1 class="headline-lg hero-title" data-reveal="left">
+              Login <br>
+              To Access.
+            </h1>
+
+            <div class="hero-card" data-reveal="left"style="height: 250px;width: 500px;">
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"style="color: black;">Doctor Login</button>
+                  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"style="color: black;">EMT Login</button>
+                  <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false"style="color: black;">Patient Login</button>
+                  <button class="nav-link" id="nav-hosp-tab" data-bs-toggle="tab" data-bs-target="#nav-hosp" type="button" role="tab" aria-controls="nav-hosp" aria-selected="false"style="color: black;">Hospital Login</button>
+                </div>
+              </nav>
+              <br>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                  <div class="wrapper">
+                      <form method="POST" action="{{url_for('login_verify')}}" class="login-form">
+                        <input type="hidden" name="active_tab" value="nav-home">
+                          <div class="input-wrapper title-lg">
+                              <input type="text" name="username" placeholder="Username" class="input-field">
+                              <input type="password" name="password" placeholder="Password" class="input-field"style="padding-top:10px;">
+                              <input type="text" name="otp" id="otp" placeholder="OTP" class="input-field" style="padding-top:10px;">
+                              <button type="button" class="btn has-before" id="sendOTPBtn" onclick="sendOTP()">Send OTP</button>
+                          </div>
+                          <button type="submit" class="btn has-before">
+                              <ion-icon name="search" style="color: white;"></ion-icon>
+                              <span class="span title-md" style="color: white;">Login</span>
+                          </button>
+                      </form>
+                  </div>
+                </div>
+                <script>
+                function sendOTP() {
+                  fetch('/login')
+                      .then(response => {
+                          if (response.ok) {
+                              // console.log('OTP sent successfully');
+                          } else {
+                              // console.error('Failed to send OTP');
+                          }
+                      })
+                      .catch(error => console.error('Error sending OTP:', error));
+              }</script>
+<style>.login-form {
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px; /* Adjust margin as needed */
+  padding-right: 20px;
+}
+
+.input-field {
+  margin-bottom: 5px; /* Adjust margin as needed */
+}
+</style>              
+              
+
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <div class="wrapper">
+                  <form method="POST" action="{{url_for('login_verify')}}" class="login-form">
+                      <input type="hidden" name="active_tab" value="nav-profile">
+                      <div class="input-wrapper title-lg">
+                          <input type="text" name="username" placeholder="Username" class="input-field">
+                          <input type="password" name="password" placeholder="Password" class="input-field" style="padding-top: 10px;">
+                          <input type="text" name="otp" id="otp" placeholder="OTP" class="input-field" style="padding-top: 10px;">
+                          <button type="button" class="btn has-before" id="sendOTPBtn" onclick="sendOTP()">Send OTP</button>
+                      </div>
+                      <button type="submit" class="btn has-before">
+                          <ion-icon name="search" style="color: white;"></ion-icon>
+                          <span class="span title-md" style="color: white;">Login</span>
+                      </button>
+                  </form>
+              </div>
+          </div>
+
+                
+          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <div class="wrapper">
+                <form method="POST" action="{{url_for('login_verify')}}" class="login-form">
+                    <input type="hidden" name="active_tab" value="nav-contact">
+                    <div class="input-wrapper title-lg">
+                        <input type="text" name="username" placeholder="Username" class="input-field">
+                        <input type="password" name="password" placeholder="Password" class="input-field" style="padding-top: 10px;">
+                        <input type="text" name="otp" id="otp" placeholder="OTP" class="input-field" style="padding-top: 10px;">
+                        <button type="button" class="btn has-before" id="sendOTPBtn" onclick="sendOTP()">Send OTP</button>
+                    </div>
+                    <button type="submit" class="btn has-before">
+                        <ion-icon name="search" style="color: white;"></ion-icon>
+                        <span class="span title-md" style="color: white;">Login</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+              
+        <div class="tab-pane fade" id="nav-hosp" role="tabpanel" aria-labelledby="nav-hosp-tab">
+          <div class="wrapper">
+              <form method="POST" action="{{ url_for('login_verify') }}" class="login-form">
+                  <input type="hidden" name="active_tab" value="nav-hosp">
+                  <div class="input-wrapper title-lg">
+                      <input type="text" name="username" placeholder="Username" class="input-field">
+                      <input type="password" name="password" placeholder="Password" class="input-field" style="padding-top: 10px;">
+                      <input type="text" name="otp" id="otp" placeholder="OTP" class="input-field" style="padding-top: 10px;">
+                      <button type="button" class="btn has-before" id="sendOTPBtn" onclick="sendOTP()">Send OTP</button>
+                  </div>
+                  <button type="submit" class="btn has-before">
+                      <ion-icon name="search" style="color: white;"></ion-icon>
+                      <span class="span title-md" style="color: white;">Login</span>
+                  </button>
+              </form>
+          </div>
+      </div>
+      
+            
+              </div>
+
+              
+
+            </div>
+
+          </div>
+
+          <figure class="hero-banner" data-reveal="right">
+            <img src="{{ url_for('static', filename='images/hero-banner.png') }}" width="590" height="517" loading="eager" alt="hero banner"
+              class="w-100">
+          </figure>
+
+        </div>
+      </section>
+
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer" style="background-image: url('{{ url_for('static', filename='images/footer-bg.png') }}')">
+    <div class="container">
+
+      <div class="section footer-top">
+
+        <div class="footer-brand" data-reveal="bottom">
+
+          <a href="#" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" width="136" height="46" loading="lazy" alt="HealthWagon home">
+          </a>
+
+          <ul class="contact-list has-after">
+
+            <li class="contact-item">
+
+              <div class="item-icon">
+                <ion-icon name="mail-open-outline"></ion-icon>
+              </div>
+
+              <div>
+                <p>
+                  Main Email : <a href="#" class="contact-link">contact@&shy;website.com</a>
+                </p>
+
+                <p>
+                  Inquiries : <a href="#" class="contact-link">Info@mail.com</a>
+                </p>
+              </div>
+
+            </li>
+
+            <li class="contact-item">
+
+              <div class="item-icon">
+                <ion-icon name="call-outline"></ion-icon>
+              </div>
+
+              <div>
+                <p>
+                  Office Telephone : <a href="tel:0029129102320" class="contact-link">0029129102320</a>
+                </p>
+
+                <p>
+                  Mobile : <a href="tel:000232439493" class="contact-link">000 2324 39493</a>
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="footer-list" data-reveal="bottom">
+
+          <p class="headline-sm footer-list-title">About Us</p>
+
+          <p class="text">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+          </p>
+
+          <address class="address">
+            <ion-icon name="map-outline"></ion-icon>
+
+            <span class="text">
+              IT Department <br>
+              CEG 
+            </span>
+          </address>
+
+        </div>
+
+        <ul class="footer-list" data-reveal="bottom">
+
+          <li>
+            <p class="headline-sm footer-list-title">Services</p>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Conditions</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Listing</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">How It Works</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">What We Offer</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Latest News</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Contact Us</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list" data-reveal="bottom">
+
+          <li>
+            <p class="headline-sm footer-list-title">Useful Links</p>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Conditions</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Terms of Use</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Our Services</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Join as a Doctor</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">New Guests List</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">The Team List</a>
+          </li>
+
+        </ul>
+
+        <div class="footer-list" data-reveal="bottom">
+
+          <p class="headline-sm footer-list-title">Subscribe</p>
+
+          <form action="" class="footer-form">
+            <input type="email" name="email" placeholder="Email" class="input-field title-lg">
+
+            <button type="submit" class="btn has-before title-md">Subscribe</button>
+          </form>
+
+          <p class="text">
+            Get the latest updates via email. Any time you may unsubscribe
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <p class="text copyright">
+          &copy; HealthWagon 2024 | All Rights Reserved by gautham
+        </p>
+
+        <ul class="social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-google"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-pinterest"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="chevron-up"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
