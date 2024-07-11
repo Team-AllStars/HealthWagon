@@ -8,10 +8,10 @@ from urllib.parse import quote_plus
 from twilio.rest import Client
 from testfile import dummy_fn 
 
-client=Client('ACb1edc646cadb42b6dd179151b754a079','898cc1bf6c1d0680ca471854c359448e')
+client=Client('')
 
 
-uri = "mongodb+srv://arvind19rajan:Venu2002@test1.zs9ohef.mongodb.net/?retryWrites=true&w=majority"
+uri = ""
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 try:
