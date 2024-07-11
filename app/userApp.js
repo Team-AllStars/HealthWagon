@@ -25,40 +25,7 @@ const colors = {
 
 import axios from 'axios';
 import { encode as base64Encode } from 'base-64';
-// const sendSMSWithCoordinates = async () => {
-//   const accountSid = 'ACd7cc01b48b08e606d1e5d771e1aec955';
-//   const authToken = '13f8c1a928216a90928d0ea7e9e12bdb';
-//   const fromNumber = '+13343848595';
-//   const toNumber = '+919003666098';
-//   const toNumber1 = "+916382486188";
 
-//   try {
-//     let { status } = await Location.requestForegroundPermissionsAsync();
-//     if (status !== 'granted') {
-//       console.error('Permission to access location was denied');
-//       return;
-//     }
-
-//     const location = await Location.getCurrentPositionAsync({});
-//     const latitude = location.coords.latitude;
-//     const longitude = location.coords.longitude;
-
-//     const messageBody = `Fall detected! Patient requires immediate assistance. Location: Latitude: ${latitude}, Longitude: ${longitude}`;
-
-//     const response = await axios.post(
-//       `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`,
-//       new URLSearchParams({
-//         From: fromNumber,
-//         To: toNumber,
-//         Body: messageBody,
-//       }),
-//       {
-//         headers: {
-//           'Content-Type': 'application/x-www-form-urlencoded',
-//           Authorization: `Basic ${base64Encode(`${accountSid}:${authToken}`)}`,
-//         },
-//       }
-//     );
 
 
 //     if (response && response.data) {
@@ -74,11 +41,11 @@ import { encode as base64Encode } from 'base-64';
 // };
 
 const sendSMSWithCoordinates = async () => {
-  const accountSid = 'ACd7cc01b48b08e606d1e5d771e1aec955';
-  const authToken = '13f8c1a928216a90928d0ea7e9e12bdb';
-  const fromNumber = '+13343848595';
-  const toNumber = '+919003666098';
-  const toNumber1 = "+916382486188";
+  const accountSid = '';
+  const authToken = '';
+  const fromNumber = '';
+  const toNumber = '';
+  const toNumber1 = "";
 
   try {
     let { status } = await Location.requestForegroundPermissionsAsync();
